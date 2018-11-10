@@ -1,0 +1,16 @@
+import edu.princeton.cs.algs4.*;
+
+public class Permutation {
+
+	// Write a client program Permutation.java that takes an integer k as a command-line argument; reads in a sequence of strings from standard input using StdIn.readString(); and prints exactly k of them, uniformly at random
+	public static void main(String[] args) {
+		
+		int numberOfElements = Integer.parseInt(args[0]);
+		RandomizedQueue<String> q = new RandomizedQueue<String>();
+		
+		while(StdIn.hasNextChar()) {
+			
+		}
+	}
+
+}

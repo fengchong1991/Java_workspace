@@ -1,0 +1,54 @@
+import java.util.Iterator;
+import java.util.Vector;
+
+public class RandomizedQueue<Item> implements Iterable<Item> {
+	Object[] array;
+	int index = 0;
+		
+	public RandomizedQueue() {
+		array = new Object[1];
+	}
+	
+	public boolean isEmpty() {
+		return index == 0;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public void enqueue(Item item) {
+		if(index == array.length) {
+			resize(2*array.length);
+		}
+		
+		s[N++] 
+	}
+	
+	public Item dequeue() {
+		
+		
+	}
+	
+	public Item sample() {
+		
+	}
+	
+	@Override
+	public Iterator<Item> iterator(){
+		
+	}		
+	
+	private void resize(int capacity) {
+	
+		
+	}
+	
+	
+	public static void main(String[] args) {
+
+	}
+
+
+
+}

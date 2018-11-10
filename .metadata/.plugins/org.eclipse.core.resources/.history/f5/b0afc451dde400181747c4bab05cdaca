@@ -1,0 +1,52 @@
+import java.util.Iterator;
+import edu.princeton.cs.algs4.*;
+
+public class RandomizedQueue<Item> implements Iterable<Item> {
+	Object[] array;
+	int index = 0;
+		
+	public RandomizedQueue() {
+		array = new Object[1];
+	}
+	
+	public boolean isEmpty() {
+		return index == 0;
+	}
+	
+	public int size() {
+		return index;
+	}
+	
+	public void enqueue(Item item) {
+		if(index == array.length) {
+			resize(2*array.length);
+		}
+		array[index++] = item;
+	}
+	
+	public Item dequeue() {
+		int dequeueIndex = 	StdRandom.uniform(index);
+						
+		
+	}
+	
+	public Item sample() {
+		int ranIndex = 	StdRandom.uniform(index);
+		return array[ranIndex];
+	}
+	
+	@Override
+	public Iterator<Item> iterator(){
+		return null;
+	}		
+	
+	private void resize(int capacity) {
+	
+		
+	}
+	
+	
+	public static void main(String[] args) {
+
+	}
+}

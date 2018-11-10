@@ -1,0 +1,105 @@
+import java.util.Iterator;
+
+public class Deque<Item> implements Iterable<Item> {
+	
+	
+	private Node start;
+	private Node end;
+	int size = 0;
+	
+	// Implement using a linked list	
+	public Deque() {
+		
+	}
+	
+	
+	public boolean isEmpty() {
+		return start == null;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public void addFirst(Item item) {
+		Node newItem = new Node(item);
+		newItem.next = start;
+		
+		if(start == null) {
+			end = newItem;			
+		}else {
+			start.prev = newItem;
+		}
+		
+		start = newItem;
+		
+		size++;
+	}
+	
+	public void addLast(Item item) {
+		
+		Node newItem = new Node(item);
+		if(end == null) {
+			start = newItem;
+		}else {
+			end.next = newItem;
+			newItem.prev = start;
+		}
+		
+		end = newItem;
+		
+		size++;
+	}
+	
+	public Item removeFirst() {
+		if(size == 0) {
+			throw new java.util.NoSuchElementException();
+		}
+		
+		Node first = start;
+		start = start.next;
+		
+		if(start == null) {
+			end = null;
+		}
+		
+		size--;
+		
+		return first.value;
+	}
+	
+	public Item removeLast() {
+		if(size == 0) {
+			throw new java.util.NoSuchElementException();
+		}
+		
+		
+	}	
+	
+
+	@Override
+	public Iterator<Item> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	public class Node{
+		Item value;
+		Node next;
+		Node prev;
+		
+		public Node(Item item){
+			if(item == null) {
+				throw new java.lang.IllegalArgumentException();
+			}
+			this.value= item;
+		}
+	}
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+}
