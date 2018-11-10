@@ -23,7 +23,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		}
 	
 		if (index == array.length) {
-			resize(2*array.length);
+			resize(2*Math.min(0, array.length));
 		}
 		array[index++] = item;
 	}
@@ -36,8 +36,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		int ranIndex = 	StdRandom.uniform(index);
 		Item dequeueItem = (Item) array[ranIndex];
 		
-		// Move the last item to the position where a random item is removed		
+		// Move the last item to the position where a random item is removed	
 		array[ranIndex] = array[--index];
+		array[index] = null;
 		
 		if (index == array.length/4) {
 			resize(array.length/2);
@@ -102,17 +103,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	public static void main(String[] args) {
 		RandomizedQueue<Integer> q = new RandomizedQueue<Integer>();
 		
-		q.enqueue(1);
-		q.enqueue(2);
-		q.enqueue(3);
-		q.enqueue(4);
-		q.enqueue(5);
-		q.enqueue(6);
-		
+		q.enqueue(315);
+
 		q.dequeue();
-		
-		for (int i : q) {
-			System.out.println(i);
-		}
+		q.enqueue(419);
+
 	}
 }

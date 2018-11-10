@@ -22,13 +22,17 @@ public class Deque<Item> implements Iterable<Item> {
 	}
 	
 	public void addFirst(Item item) {
+		if (item == null) {
+			throw new java.lang.IllegalArgumentException();
+		}
+		
 		Node newItem = new Node(item);
-		newItem.next = start;
 		
 		if (start == null) {
 			end = newItem;			
 		} else {
 			start.prev = newItem;
+			newItem.next = start;
 		}
 		
 		start = newItem;
@@ -37,13 +41,13 @@ public class Deque<Item> implements Iterable<Item> {
 	}
 	
 	public void addLast(Item item) {
-		
 		Node newItem = new Node(item);
+		
 		if (end == null) {
 			start = newItem;
 		} else {
 			end.next = newItem;
-			newItem.prev = start;
+			newItem.prev = end;
 		}
 		
 		end = newItem;
@@ -61,10 +65,11 @@ public class Deque<Item> implements Iterable<Item> {
 		
 		if (start == null) {
 			end = null;
+		}else {
+			start.prev = null;
 		}
 		
 		size--;
-		
 		return first.value;
 	}
 	
@@ -73,19 +78,18 @@ public class Deque<Item> implements Iterable<Item> {
 			throw new java.util.NoSuchElementException();
 		}
 		
-		Node last = end;
-		
+		Node last = end;		
 		end = end.prev;
-		
+
 		if (end == null) {
 			start = null;
+		}else {
+			end.next = null;
 		}
 		
 		size--;
-		
 		return last.value;
 	}	
-	
 
 	@Override
 	public Iterator<Item> iterator() {
@@ -135,17 +139,9 @@ public class Deque<Item> implements Iterable<Item> {
 		// TODO Auto-generated method stub
 		Deque<Integer> deque = new Deque<Integer>();
 		
-		deque.addLast(5);
-		deque.addLast(4);
-		deque.addLast(10);
-		deque.addLast(51);
-		
+		deque.addFirst(1);
+		deque.isEmpty();
 		deque.removeFirst();
-		deque.removeLast();
-		deque.addFirst(100);
-		
-		for(Integer d : deque) {
-			System.out.println(d);
-		}
+
 	}
 }
