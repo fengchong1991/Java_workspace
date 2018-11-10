@@ -102,7 +102,7 @@ public class Deque<Item> implements Iterable<Item> {
 		private Node current = start;
 		@Override
 		public boolean hasNext() {
-			return current.next != null;
+			return current != null;
 		}
 
 		@Override
@@ -140,8 +140,10 @@ public class Deque<Item> implements Iterable<Item> {
 		Deque<Integer> deque = new Deque<Integer>();
 		
 		deque.addFirst(1);
-		deque.isEmpty();
-		deque.removeFirst();
+		
+		for(int i : deque) {
+			System.out.println(i);
+		}
 
 	}
 }

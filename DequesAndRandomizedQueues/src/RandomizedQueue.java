@@ -23,14 +23,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		}
 	
 		if (index == array.length) {
-			resize(2*Math.min(0, array.length));
+			resize(2*Math.max(1, array.length));
 		}
 		array[index++] = item;
 	}
 	
 	public Item dequeue() {
 		if (index == 0) {
-			throw new java.lang.IllegalArgumentException();
+			throw new java.util.NoSuchElementException();
 		}
 		
 		int ranIndex = 	StdRandom.uniform(index);
@@ -104,9 +104,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		RandomizedQueue<Integer> q = new RandomizedQueue<Integer>();
 		
 		q.enqueue(315);
-
-		q.dequeue();
-		q.enqueue(419);
+        q.enqueue(1);
 
 	}
 }
